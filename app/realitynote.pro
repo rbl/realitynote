@@ -4,6 +4,10 @@
 #
 #-------------------------------------------------
 
+macx {
+    CONFIG += x86
+}
+
 TARGET = realitynote
 TEMPLATE = app
 
