@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QtGui/QMainWindow>
+#include "realitynote.h"
 
 namespace Ui
 {
@@ -13,11 +14,16 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = 0);
+    MainWindow(RealityNote& rn, QWidget *parent = 0);
     ~MainWindow();
+
+protected:
+    virtual void closeEvent(QCloseEvent* event);
 
 private:
     Ui::MainWindowClass *ui;
+    RealityNote& mRn;
+
 };
 
 #endif // MAINWINDOW_H

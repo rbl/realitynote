@@ -2,3 +2,4 @@ Makefile*
 qtc-gdbmacros
 realitynote
 realitynote.app
+object_script.*
