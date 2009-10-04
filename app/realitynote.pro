@@ -10,13 +10,15 @@ SOURCES += main.cpp \
     logview.cpp \
     logger.cpp \
     realitynote.cpp \
-    settings.cpp
+    settings.cpp \
+    mwdocview.cpp
 HEADERS += mainwindow.h \
     document.h \
     logview.h \
     logger.h \
     constants.h \
     realitynote.h \
-    settings.h
+    settings.h \
+    mwdocview.h
 FORMS += mainwindow.ui \
     logview.ui

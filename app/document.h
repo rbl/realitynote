@@ -4,20 +4,30 @@
 #include <QObject>
 #include <QString>
 #include <QTextEdit>
+#include <QTextDocument>
+
+class MWDocView;
 
 class Document : public QObject
 {
-    Q_OBJECT
-
 public:
     Document();
-    inline QWidget* getWidget() {return &textEdit;}
+
+    inline QString& title() { return mTitle; }
+    void setTitle(QString title);
+
+    void addView(MWDocView* view);
+    void removeView(MWDocView* view);
+
+    inline QTextDocument& document() { return mTextDoc; }
 
 public slots:
-    void loadFromFile(QString filename);
+    void loadFromFile(QString& filename);
 
 private:
-    QTextEdit textEdit;
+    QString mTitle;
+    QList<MWDocView*> mViewList;
+    QTextDocument mTextDoc;
 
 };
 

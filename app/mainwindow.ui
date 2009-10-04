@@ -35,6 +35,9 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
       <property name="iconSize">
        <size>
         <width>16</width>
@@ -70,7 +73,7 @@
      <x>0</x>
      <y>0</y>
      <width>507</width>
-     <height>21</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -78,7 +81,7 @@
      <string>File</string>
     </property>
     <addaction name="actionNew"/>
-    <addaction name="actionOpen_Existing"/>
+    <addaction name="actionOpenExisting"/>
     <addaction name="separator"/>
     <addaction name="actionQuit"/>
    </widget>
@@ -121,7 +124,7 @@
     <string>New</string>
    </property>
   </action>
-  <action name="actionOpen_Existing">
+  <action name="actionOpenExisting">
    <property name="text">
     <string>Open Existing</string>
    </property>

@@ -6,6 +6,7 @@
 #include "logview.h"
 
 class MainWindow;
+class Document;
 
 class RealityNote : public QObject
 {
@@ -22,12 +23,16 @@ public:
 public slots:
     void initialize();
     void showLog();
+    void newDocument(MainWindow& win);
+    void openExisting(MainWindow& win);
 
 signals:
     void timeToExit();
 
-protected:
+private:
     Logview mLogView;
+    QList<MainWindow*> mMainWinList;
+    QList<Document*> mDocList;
 
     virtual void newMainWindow();
     virtual void doExit();

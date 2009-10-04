@@ -3,3 +3,5 @@ qtc-gdbmacros
 realitynote
 realitynote.app
 object_script.*
+*.log
+*.log.0
