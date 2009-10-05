@@ -23,8 +23,11 @@ public:
     virtual void docViewTitleChanged(MWDocView& view, QString& title);
 
 public slots:
+    virtual void tabCloseRequested(int index);
+
     virtual void newDocument();
     virtual void openExisting();
+    virtual void closeDocument();
 
 protected:
     virtual void closeEvent(QCloseEvent* event);
@@ -34,6 +37,8 @@ private:
     RealityNote& mRn;
 
     QList<MWDocView*> mDocViewList;
+
+    MWDocView* findViewFromWidget(QWidget* widg);
 };
 
 

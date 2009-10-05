@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QFile>
 #include <QDir>
+#include <QTimer>
 
 Document::Document()
 : mTitle("Untitled")
@@ -48,4 +49,25 @@ void Document::loadFromFile(QString& filename)
 
         setTitle(QDir(filename).dirName());
     }
+}
+
+
+
+void Document::close()
+{
+    QTimer::singleShot(0, this, SLOT(doClose()));
+}
+
+///////////////////////////////////////////////////////////////
+// Private
+
+void Document::doClose()
+{
+    QList<MWDocView*>::iterator i;
+    for(i = mViewList.begin(); i != mViewList.end(); ++i)
+    {
+        (*i)->docClosed();
+    }
+
+    mViewList.clear();
 }

@@ -73,7 +73,7 @@
      <x>0</x>
      <y>0</y>
      <width>507</width>
-     <height>27</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -82,6 +82,8 @@
     </property>
     <addaction name="actionNew"/>
     <addaction name="actionOpenExisting"/>
+    <addaction name="separator"/>
+    <addaction name="actionClose"/>
     <addaction name="separator"/>
     <addaction name="actionQuit"/>
    </widget>
@@ -161,6 +163,14 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+L</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="text">
+    <string>Close</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
    </property>
   </action>
  </widget>

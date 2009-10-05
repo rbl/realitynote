@@ -16,15 +16,30 @@ MainWindow::MainWindow(RealityNote& rn, QWidget *parent)
     ui->tabWidget->removeTab(1);
     ui->tabWidget->removeTab(0);
 
+    connect(ui->tabWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(tabCloseRequested(int)));
+
     connect(ui->actionNew, SIGNAL(triggered()), this, SLOT(newDocument()));
     connect(ui->actionOpenExisting, SIGNAL(triggered()), this, SLOT(openExisting()));
+    connect(ui->actionClose, SIGNAL(triggered()), this, SLOT(closeDocument()));
     connect(ui->actionQuit, SIGNAL(triggered()), this, SLOT(close()));
     connect(ui->actionShowLog, SIGNAL(triggered()), &mRn, SLOT(showLog()));
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+
+void MainWindow::tabCloseRequested(int index)
+{
+    MWDocView* view = findViewFromWidget(ui->tabWidget->widget(index));
+
+    if (view)
+    {
+        view->closeView();
+    }
 }
 
 
@@ -37,6 +52,17 @@ void MainWindow::newDocument()
 void MainWindow::openExisting()
 {
     mRn.openExisting(*this);
+}
+
+
+void MainWindow::closeDocument()
+{
+    MWDocView* view = findViewFromWidget(ui->tabWidget->currentWidget());
+
+    if (view)
+    {
+        view->closeDoc();
+    }
 }
 
 
@@ -93,4 +119,20 @@ void MainWindow::docViewTitleChanged(MWDocView& view, QString& title)
     {
         ui->tabWidget->setTabText(ix,title);
     }
+}
+
+
+MWDocView* MainWindow::findViewFromWidget(QWidget* widg)
+{
+    if (!widg) return NULL;
+
+    for(int i=0; i<mDocViewList.length(); i++)
+    {
+        if(&(mDocViewList.at(i)->mTextEdit) == widg)
+        {
+            return mDocViewList.at(i);
+        }
+    }
+
+    return NULL;
 }

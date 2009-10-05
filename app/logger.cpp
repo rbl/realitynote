@@ -141,7 +141,7 @@ void Logger::enableSyslog(bool doSysLog)
     {
         if (mSyslogEnabled) return; // no change
 
-        openlog("hsb", LOG_NDELAY bitor LOG_PID, LOG_USER);
+        openlog(RN_SYSLOG_NAME, LOG_NDELAY bitor LOG_PID, LOG_USER);
         mSyslogEnabled = true;
     }
     else
@@ -279,7 +279,7 @@ Logger::Logger()
     
 #ifdef Q_WS_MAC
     struct passwd* pw = getpwuid(getuid());    
-    logDirname = QString(pw->pw_dir) + "/Library/Logs/HipsipBridge/";
+    logDirname = QString(pw->pw_dir) + "/Library/Logs/" RN_LOG_FILE_DIR "/";
 #endif // #ifdef Q_WS_MAC
 
     printf("logDirname=`%s`\n",logDirname.toAscii().data());

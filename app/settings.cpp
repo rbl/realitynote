@@ -9,7 +9,7 @@
 
 
 Settings::Settings()
-: QSettings(QSettings::UserScope, RB_SETTINGS_DOMAIN, RN_APPLICATION_NAME)
+: QSettings(QSettings::UserScope, RN_SETTINGS_DOMAIN, RN_APPLICATION_NAME)
 {
     loadSettings();
 }
